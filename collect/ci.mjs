@@ -57,7 +57,7 @@ writeFileSync(here('../data/last-run.json'), JSON.stringify({ date: report.date,
 
 // 새 중기청 추천 공고는 GitHub 이슈로 올려 메일 알림을 받는다
 if (process.env.GITHUB_OUTPUT && sme.length) {
-  const title = `서울중기청 새 추천 공고: ${sme.map((s) => s.name).join(', ')}`;
+  const title = `서울중기청 새 추천 공고: ${sme.map((s) => s.name).join(', ')}`.replace(/[\r\n]+/g, ' ').slice(0, 200);
   const body = sme.map((s) => `- ${s.name} (${s.gu || '-'}) 신청 ${s.start} ~ ${s.end}, ${s.units || ''}\n  ${s.url}`).join('\n');
   writeFileSync(join(tmp, 'alert.md'), body);
   appendFileSync(process.env.GITHUB_OUTPUT, `alert_title=${title}\nalert_body=${join(tmp, 'alert.md')}\n`);
