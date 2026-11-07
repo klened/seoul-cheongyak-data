@@ -15,6 +15,73 @@ const get = async (u, opt = {}) => { const r = await fetch(u, { ...opt, headers:
 const kst = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
 const year = Number(kst.slice(0, 4));
 
+// 표를 행·칸 배열로 읽는다. 주석 안의 칸은 뺀다
+const tablesOf = (html) => [...html.replace(/<!--[\s\S]*?-->/g, '').matchAll(/<table[\s\S]*?<\/table>/gi)].map((m) => ({ index: m.index, rows: [...m[0].matchAll(/<tr[\s\S]*?<\/tr>/gi)].map((r) => [...r[0].matchAll(/<t[dh][\s\S]*?<\/t[dh]>/gi)].map((c) => strip(c[0]))) }));
+const numOf = (x) => { const n = Number(String(x).replace(/[^\d.]/g, '')); return Number.isFinite(n) ? n : null; };
+
+// 청약홈 상세: 주택형별 면적·세대수·공급금액, 입주예정월, 특이사항, 공고문 링크
+function parseHomeDetail(html) {
+  const tabs = tablesOf(html);
+  const text = strip(html);
+  const types = new Map();
+  for (const t of tabs) {
+    const head = t.rows.slice(0, 2).flat().join(' ');
+    const isSupply = /(주택형|타입)/.test(head) && /(공급면적|전용면적)/.test(head);
+    const isPrice = /공급금액/.test(head);
+    for (const c of t.rows) {
+      if (c.length < 2) continue;
+      if (isSupply && /전용면적/.test(head)) { // 오피스텔·도시형: 타입, 전용면적, 세대수, 관리번호
+        const n = c.length; const name = c[n - 4]; const area = numOf(c[n - 3]); const cnt = numOf(c[n - 2]);
+        if (!name || !/\(\d+\)$/.test(c[n - 1]) || !area) continue;
+        types.set(name, { ...(types.get(name) || {}), t: name, area, n: cnt });
+      } else if (isSupply) { // 아파트: 주택형, 공급면적, 일반, 특별, 계, 관리번호
+        const i = c.findIndex((x) => /^\d{2,3}\.\d{2,4}[A-Z0-9]*$/.test(x));
+        if (i < 0 || c.length < i + 5) continue;
+        types.set(c[i], { ...(types.get(c[i]) || {}), t: c[i], area: numOf(c[i].replace(/[A-Z]+\d*$/, '')), gen: numOf(c[i + 2]), spec: numOf(c[i + 3]), n: numOf(c[i + 4]) });
+      } else if (isPrice) {
+        const apt = c.findIndex((x) => /^\d{2,3}\.\d{2,4}[A-Z0-9]*$/.test(x));
+        const name = apt >= 0 ? c[apt] : c[c.length - 3];
+        const amt = apt >= 0 ? numOf(c[apt + 1]) : numOf(c[c.length - 2]);
+        if (!name || !amt || /공급금액|타입|주택형/.test(c.join(' '))) continue;
+        types.set(name, { ...(types.get(name) || {}), t: name, amt });
+      }
+    }
+  }
+  // 값이 상식 범위를 벗어나면 금액을 쓰지 않는다(만원 단위 5백만~50억, 전용 5~400㎡)
+  const list = [...types.values()].filter((x) => x.area >= 5 && x.area <= 400).map((x) => { const y = { ...x }; if (!(y.amt >= 500 && y.amt <= 500000)) delete y.amt; return y; });
+  const out = {};
+  if (list.length) out.types = list;
+  const mv = text.match(/입주예정월\s*:\s*(\d{4})\.(\d{1,2})/);
+  if (mv) out.moveIn = `${mv[1]}년 ${Number(mv[2])}월`;
+  const fl = text.match(/특이사항\s*:\s*([^*]{2,60})/);
+  if (fl) out.flags = fl[1].trim();
+  const doc = html.match(/href="(https?:\/\/[^"]*getAtchmnfl[^"]*)"/);
+  if (doc) out.docUrl = dec(doc[1]);
+  return out;
+}
+
+// 청년안심주택 단지 상세: 공급 구분별 임대 조건. 월세·보증금이 상식 범위를 벗어나면 그 값을 비운다(원본 오타 대비)
+function parseRentPlans(html) {
+  const clean = html.replace(/<!--[\s\S]*?-->/g, '');
+  const plans = [];
+  for (const t of tablesOf(html)) {
+    const head = (t.rows[0] || []).join(' ');
+    if (!/보증금/.test(head) || !/월임대료/.test(head)) continue;
+    const before = strip(clean.slice(Math.max(0, t.index - 300), t.index));
+    const g = (before.match(/(특별공급|일반공급)\s*:\s*\d+\s*$/) || [])[1] || '';
+    for (const c of t.rows.slice(1)) {
+      if (c.length < 7) continue;
+      const dep = numOf(c[4]), rent = numOf(c[5]), fee = numOf(c[6]);
+      const p = { g, room: c[0], who: c[2], n: numOf(c[3]) };
+      if (dep >= 1000000 && dep <= 1000000000) p.dep = dep;
+      if (rent >= 10000 && rent <= 3000000) p.rent = rent;
+      if (fee >= 1000 && fee <= 1000000) p.fee = fee;
+      plans.push(p);
+    }
+  }
+  return plans;
+}
+
 const rows = []; const errors = {}; const counts = {}; const texts = {};
 async function source(name, fn) { try { const before = rows.length; await fn(); counts[name] = rows.length - before; } catch (e) { errors[name] = String(e.message || e); counts[name] = 0; } }
 const row = (r) => { const o = { sme: false, seen: kst, ...r }; Object.keys(o).forEach((k) => { if (o[k] === '' || o[k] == null) delete o[k]; }); rows.push(o); };
@@ -87,14 +154,19 @@ for (const [name, path, pre, cat] of [
           const [start, end] = period(tds.join(' '));
           if (end && end < kst) continue;
           const ann = (tds.join(' ').match(/~\s*20\d\d-\d\d-\d\d\s+(?:☎\s*\S+\s+)?(20\d\d-\d\d-\d\d)/) || [])[1] || '';
-          let gu = '', units = '', url = home + path;
-          if (pre !== 'ahr') {
-            const hm = attr('hmno');
-            const du = pre === 'ah' ? `${home}selectAPTLttotPblancDetail.do?houseManageNo=${hm}&pblancNo=${pbno}` : `${home}selectPRMOLttotPblancDetailView.do?houseManageNo=${hm}&pblancNo=${pbno}&houseSecd=${attr('hsecd') || '01'}`;
-            try { const t = strip(await get(du, { headers: { Referer: home + path } })); gu = (t.match(/서울특별시\s+(\S+구)/) || [])[1] || ''; units = (t.match(/공급규모\s*(\d[\d,]*\s*(?:세대|실|호))/) || [])[1] || ''; if (gu) url = du; } catch { /* 상세가 안 열리면 목록 주소를 쓴다 */ }
-            await wait(300);
-          }
-          row({ id: `${pre}-${pbno}`, src: '청약홈', cat, name: dec(attr('honm')), gu, start, end, ann, units, who: pre === 'ah' ? `${tds[1]} ${tds[2]}` : tds[1], url });
+          let gu = '', units = '', url = home + path, extra = {};
+          const hm = attr('hmno');
+          const du = pre === 'ah' ? `${home}selectAPTLttotPblancDetail.do?houseManageNo=${hm}&pblancNo=${pbno}` : pre === 'ahx' ? `${home}selectPRMOLttotPblancDetailView.do?houseManageNo=${hm}&pblancNo=${pbno}&houseSecd=${attr('hsecd') || '01'}` : `${home}selectAPTRemndrLttotPblancDetailView.do?houseManageNo=${hm}&pblancNo=${pbno}`;
+          try {
+            const html = await get(du, { headers: { Referer: home + path } });
+            const t = strip(html);
+            gu = (t.match(/서울특별시\s+(\S+구)/) || [])[1] || '';
+            units = (t.match(/공급규모\s*(\d[\d,]*\s*(?:세대|실|호))/) || [])[1] || '';
+            if (gu) url = du;
+            extra = parseHomeDetail(html);
+          } catch { /* 상세가 안 열리면 목록 정보만 쓴다 */ }
+          await wait(300);
+          row({ id: `${pre}-${pbno}`, src: '청약홈', cat, name: dec(attr('honm')), gu, start, end, ann, units, who: pre === 'ah' ? `${tds[1]} ${tds[2]}` : tds[1], url, ...extra });
         }
         await wait(300);
       }
@@ -141,6 +213,12 @@ await source('SH', async () => {
 
 // 4) 청년안심주택: 목록 JSON의 content 에 기간이 있다
 await source('청년안심주택', async () => {
+  const socoBase = 'https://soco.seoul.go.kr';
+  let homes = [];
+  try {
+    homes = JSON.parse(await get(socoBase + '/youth/pgm/home/yohome/compareCompleteYoHomeListJson.json', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'X-Requested-With': 'XMLHttpRequest', Referer: socoBase + '/youth/pgm/home/yohome/list.do?menuNo=400002' }, body: new URLSearchParams({ pageIndex: '1' }) })).resultList || [];
+  } catch { /* 임대 조건 없이 공고만 넣는다 */ }
+  const key = (x) => String(x || '').replace(/\s|추가모집공고|최초모집공고|입주자|모집공고|공고|청년안심주택/g, '');
   for (let p = 1; p <= 2; p++) {
     const text = await get('https://soco.seoul.go.kr/youth/pgm/home/yohome/bbsListJson.json', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'X-Requested-With': 'XMLHttpRequest', Referer: 'https://soco.seoul.go.kr/youth/bbs/BMSR00015/list.do?menuNo=400008' }, body: new URLSearchParams({ bbsId: 'BMSR00015', pageIndex: String(p), searchAdresGu: '', searchCondition: '', searchKeyword: '', optn2: '', optn5: '' }) });
     for (const x of JSON.parse(text).resultList) {
@@ -154,6 +232,14 @@ await source('청년안심주택', async () => {
       const id = 'soco-' + x.boardId;
       row({ id, src: '서울시 청년안심주택', cat: '청년안심주택', name: x.nttSj.replace(/^\[[^\]]+\]\s*/, ''), gu: (c.match(/서울특별시\s+(\S+구)/) || [])[1] || '', start, end, units: /예비자/.test(uu) ? '예비자 모집' : (uu.match(/공공지원민간임대\s*(\d[\d,]*세대)/)?.[1] || uu.match(/(\d[\d,]*세대)/)?.[1] || ''), posted: x.optn1, url: `https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=${x.boardId}&menuNo=400008` });
       texts[id] = c.slice(0, 800);
+      // 공고 링크와 단지 임대 조건
+      const cur = rows[rows.length - 1];
+      if (x.atchFileId) cur.docUrl = `${socoBase}/coHouse/cmmn/file/fileDown.do?atchFileId=${x.atchFileId}&fileSn=1`;
+      const hit = homes.filter((h) => key(h.homeName) === key(cur.name) && (!cur.gu || h.adresGu === cur.gu));
+      if (hit.length === 1) {
+        try { const plans = parseRentPlans(await get(`${socoBase}/youth/pgm/home/yohome/view.do?menuNo=400002&homeCode=${hit[0].homeCode}`)); if (plans.length) cur.plans = plans; } catch { /* 없으면 공고만 */ }
+        await wait(300);
+      }
     }
     await wait(300);
   }
@@ -173,6 +259,7 @@ for (const r of uniq.values()) {
   }
   const diff = {};
   for (const k of ['start', 'end', 'ann', ...(r.sme ? ['units'] : [])]) if (r[k] && r[k] !== old.data[k]) diff[k] = r[k];
+  for (const k of ['types', 'plans', 'moveIn', 'flags', 'docUrl']) if (r[k] !== undefined && JSON.stringify(r[k]) !== JSON.stringify(old.data[k])) diff[k] = r[k];
   if (r.sme && pubKey && !String(old.data.note || '').includes(pubKey)) diff.note = r.note; // 입주자모집공고일이 바뀐 경우만
   if (Object.keys(diff).length) changed.push({ id: r.id, version: old.version, name: old.data.name, diff: { ...diff, seen: kst } });
 }
