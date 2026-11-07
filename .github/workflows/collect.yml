@@ -3,6 +3,9 @@ on:
   schedule:
     - cron: '0 22 * * *' # 매일 07:00 KST. GitHub 사정으로 조금 늦을 수 있다
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['collect/**', '.github/workflows/**'] # 수집 코드를 고치면 바로 시험한다. data/ 커밋으로는 돌지 않는다
 permissions:
   contents: write
   issues: write
