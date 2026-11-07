@@ -1,6 +1,6 @@
 // 서울 청약 보드 일일 수집. 사용: node daily.mjs <기존 notices 폴더> <결과 파일>
 // 공고 사이트를 읽어 새 공고(added)와 일정이 바뀐 공고(changed)를 결과 파일에 쓴다. 저장소에는 쓰지 않는다.
-// 문서 id 규칙(바꾸면 지원 체크가 풀린다): mss-글번호, ah-/ahx-/ahr-공고번호, sh-SH글번호, soco-글번호, jg-uuid앞8자리, lh-panId
+// 문서 id 규칙(바꾸면 지원 체크가 풀린다): mss-글번호, ah-/ahx-/ahr-공고번호, sh-SH글번호, soco-글번호, lh-공고번호(LH API 연결 후)
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -160,39 +160,6 @@ await source('청년안심주택', async () => {
 });
 
 
-// 5) 주거나침반: LH·사회주택·행복주택 등 위 출처에 없는 서울 공고
-await source('주거나침반', async () => {
-  const html = await get('https://jugeo.co.kr/region/seoul');
-  const seen = new Set();
-  for (const m of html.matchAll(/<a[^>]+href="\/announcements\/([0-9a-f-]{36})"[^>]*>([\s\S]*?)<\/a>/g)) {
-    if (seen.has(m[1])) continue; seen.add(m[1]);
-    const label = strip(m[2]);
-    if (!label || /청년안심주택 ·|^D-\d+ 청년안심/.test(label)) continue;
-    const page = await get('https://jugeo.co.kr/announcements/' + m[1]);
-    const t = strip(page);
-    const name = strip((page.match(/<h1[^>]*>([\s\S]*?)<\/h1>/) || [])[1] || '').replace(/^\[[^\]]+\]\s*/, '');
-    if (!name || rows.some((r) => norm(r.name) === norm(name)) || known.includes(norm(name))) { await wait(300); continue; }
-    if (/공고 › 서울\s*마감/.test(t) || /모집이 종료되어/.test(t)) { await wait(300); continue; }
-    const per = t.match(/신청 기간\s*(20\d\d)\.\s*(\d+)\.\s*(\d+)\.[^~]{0,12}(?:~\s*(?:(20\d\d)\.\s*)?(\d+)\.\s*(\d+))?/);
-    const official = [...page.matchAll(/href="(https?:\/\/[^"]+)"/g)].map((x) => dec(x[1])).find((h) => /(lh\.or\.kr|i-sh|myhome|go\.kr)/.test(h)) || '';
-    if (official && (knownUrls.has(official) || rows.some((r) => r.url === official))) { await wait(300); continue; }
-    const panId = official.match(/panId=(\d+)/)?.[1];
-    const shSeq = official.match(/i-sh[^\s]*seq=(\d+)/)?.[1];
-    if (shSeq && existing['sh-' + shSeq]) { await wait(300); continue; }
-    const isLH = /^LH|\bLH\b/.test(t.slice(t.indexOf('공고 ›'), t.indexOf('공고 ›') + 60));
-    const id = panId ? 'lh-' + panId : shSeq ? 'sh-' + shSeq : 'jg-' + m[1].slice(0, 8);
-    const start = per ? `${per[1]}-${pad(per[2])}-${pad(per[3])}` : '';
-    const end = per && per[5] ? `${per[4] || per[1]}-${pad(per[5])}-${pad(per[6])}` : '';
-    if (!start && !end) { await wait(300); continue; }
-    if ((end || start) < kst) { await wait(300); continue; }
-    row({ id, src: '주거나침반', cat: /든든전세/.test(name) ? 'LH 든든전세' : isLH ? 'LH 임대' : /행복주택/.test(name) ? '행복주택' : /사회주택|어울리|하우스/.test(t.slice(0, 2000)) ? '사회주택' : 'SH 임대', name, gu: (t.match(/공급 지역\s*(\S+구)/) || [])[1] || '', start, end, url: official || 'https://jugeo.co.kr/announcements/' + m[1], note: '민간 모음 사이트 기준 일정. 공고문으로 다시 확인' });
-    const i = t.indexOf('공고 자격 기준', t.indexOf('공고 원문 기준으로'));
-    const e = t.indexOf('놓치면 탈락', i);
-    if (i > 0) texts[id] = t.slice(i, e > i ? e : i + 2500).replace(/[a-z&>\[\]:.\-\d]*\]:\S* ?/g, '').slice(0, 2500);
-    await wait(400);
-  }
-});
-
 // 비교
 const added = []; const changed = [];
 const uniq = new Map(rows.map((r) => [r.id, r]));
@@ -212,4 +179,4 @@ for (const r of uniq.values()) {
 const report = { date: kst, existing: Object.keys(existing).length, counts, errors, added, changed };
 writeFileSync(outFile, JSON.stringify(report, null, 1));
 console.log(JSON.stringify({ date: kst, existing: report.existing, counts, errors, added: added.map((a) => `${a.id} ${a.name} ${a.start || '-'}~${a.end || '-'}${a.needs_el ? ' (el 필요)' : ''}`), changed: changed.map((c) => `${c.id} ${c.name} ${JSON.stringify(c.diff)}`) }, null, 1));
-if (Object.keys(errors).length === 7) process.exit(1);
+if (Object.keys(errors).length === Object.keys(counts).length) process.exit(1);
