@@ -48,6 +48,9 @@ for (const c of report.changed) {
   const old = byId.get(c.id);
   if (old) Object.assign(old, c.diff);
 }
+// 공고문을 읽어 확인한 값은 수집 결과보다 우선한다
+const facts = JSON.parse(readFileSync(here('./facts.json'), 'utf8'));
+for (const [id, f] of Object.entries(facts)) { const n = byId.get(id); if (n && id !== '_about') Object.assign(n, f); }
 const failedAll = Object.keys(report.errors).length >= Object.keys(report.counts).length;
 if (!failedAll) {
   const merged = [...byId.values()].sort((x, y) => x.id.localeCompare(y.id));
