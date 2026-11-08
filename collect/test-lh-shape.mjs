@@ -11,7 +11,8 @@ const sample = [{ dsSch: [{ PAGE: '1' }] }, { resHeader: [{ SS_CODE: 'Y' }], dsL
   { PAN_ID: '0000061236', UPP_AIS_TP_NM: '임대주택', AIS_TP_CD_NM: '든든전세', PAN_NM: '든든전세주택 3차', CNP_CD_NM: '경기도', CLSG_DT: '2026.11.22' },
   { PAN_ID: '0000061237', UPP_AIS_TP_NM: '임대주택', AIS_TP_CD_NM: '매입임대', PAN_NM: '서울지역 청년 매입임대', CNP_CD_NM: '서울특별시', CLSG_DT: '20261125', DTL_URL: 'http://evil.example/x' },
 ] }];
-const code = `const rows=[];const errors={};const counts={};const wait=()=>0;const strip=s=>s;const dec=s=>s;
+sample[1].dsList.push({ PAN_ID: '2015122300020984', UPP_AIS_TP_NM: '상가', AIS_TP_CD_NM: '임대상가(추첨)', PAN_NM: '서울가좌 희망상가 입점자 모집공고', CNP_CD_NM: '서울특별시', CLSG_DT: '2026.11.19' });
+const code = `const rows=[];const errors={};const counts={};const lhKinds={};const wait=()=>0;const strip=s=>s;const dec=s=>s;
 const row=r=>{const o={...r};for(const k of Object.keys(o))if(o[k]===''||o[k]==null)delete o[k];rows.push(o)};
 async function source(n,fn){try{const b=rows.length;await fn();counts[n]=rows.length-b}catch(e){errors[n]=e.message}}
 let calls=0;const get=async(u)=>{calls++;if(!u.includes('CNP_CD=11'))throw new Error('지역 조건 없음');if(u.includes('fake%2Fkey'))return JSON.stringify(SAMPLE);return 'X'};

@@ -82,7 +82,7 @@ function parseRentPlans(html) {
   return plans;
 }
 
-const rows = []; const errors = {}; const counts = {}; const texts = {};
+const rows = []; const errors = {}; const counts = {}; const texts = {}; const lhKinds = {};
 async function source(name, fn) { try { const before = rows.length; await fn(); counts[name] = rows.length - before; } catch (e) { errors[name] = String(e.message || e); counts[name] = 0; } }
 const row = (r) => { const o = { sme: false, seen: kst, ...r }; Object.keys(o).forEach((k) => { if (o[k] === '' || o[k] == null) delete o[k]; }); rows.push(o); };
 
@@ -271,7 +271,9 @@ if (process.env.LH_API_KEY) await source('LH', async () => {
   const ymd = (v) => { const m = String(v || '').match(/(20\d\d)[.\-]?(\d\d)[.\-]?(\d\d)/); return m ? `${m[1]}-${m[2]}-${m[3]}` : ''; };
   for (const x of items) {
     const kind = `${x.UPP_AIS_TP_NM || ''} ${x.AIS_TP_CD_NM || ''}`;
-    if (!/임대|전세|주거복지/.test(kind) || (x.CNP_CD_NM && !/서울/.test(x.CNP_CD_NM)) || !x.PAN_ID) continue;
+    lhKinds[kind.trim()] = (lhKinds[kind.trim()] || 0) + 1;
+    // 주택 임대만 넣는다. 「임대상가」처럼 이름에 임대가 들어간 상가·토지 공고는 뺀다
+    if (!/주택|주거복지|전세/.test(kind) || /상가|토지|용지|분양/.test(kind) || (x.CNP_CD_NM && !/서울/.test(x.CNP_CD_NM)) || !x.PAN_ID) continue;
     const name = dec(x.PAN_NM || '');
     row({
       id: 'lh-' + String(x.PAN_ID).trim(), src: 'LH', cat: 'LH 임대', name,
@@ -302,7 +304,7 @@ for (const r of uniq.values()) {
   if (r.sme && pubKey && !String(old.data.note || '').includes(pubKey)) diff.note = r.note; // 입주자모집공고일이 바뀐 경우만
   if (Object.keys(diff).length) changed.push({ id: r.id, version: old.version, name: old.data.name, diff: { ...diff, seen: kst } });
 }
-const report = { date: kst, existing: Object.keys(existing).length, counts, errors, added, changed };
+const report = { date: kst, existing: Object.keys(existing).length, counts, errors, added, changed, lhKinds };
 writeFileSync(outFile, JSON.stringify(report, null, 1));
 console.log(JSON.stringify({ date: kst, existing: report.existing, counts, errors, added: added.map((a) => `${a.id} ${a.name} ${a.start || '-'}~${a.end || '-'}${a.needs_el ? ' (el 필요)' : ''}`), changed: changed.map((c) => `${c.id} ${c.name} ${JSON.stringify(c.diff)}`) }, null, 1));
 if (Object.keys(errors).length === Object.keys(counts).length) process.exit(1);

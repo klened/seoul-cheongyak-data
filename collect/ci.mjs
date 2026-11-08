@@ -55,12 +55,14 @@ const facts = JSON.parse(readFileSync(here('./facts.json'), 'utf8'));
 const todayKst = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
 try { await applyAutoDocs(byId, facts, todayKst); } catch (e) { console.log('공고문 자동 읽기 건너뜀:', e.message); }
 for (const [id, f] of Object.entries(facts)) { const n = byId.get(id); if (n && id !== '_about') Object.assign(n, f); }
+// LH 상가·토지 공고는 주택이 아니므로 남아 있으면 지운다(11/8 수집 초기에 잘못 들어온 것 포함)
+for (const [id, n] of byId) if (/^lh-/.test(id) && /상가|토지|용지|분양/.test(n.who || '')) byId.delete(id);
 const failedAll = Object.keys(report.errors).length >= Object.keys(report.counts).length;
 if (!failedAll) {
   const merged = [...byId.values()].sort((x, y) => x.id.localeCompare(y.id));
   writeFileSync(noticesFile, JSON.stringify(merged, null, 1) + '\n');
 }
-writeFileSync(here('../data/last-run.json'), JSON.stringify({ date: report.date, counts: report.counts, errors: report.errors, added: report.added.length, changed: report.changed.length }, null, 1) + '\n');
+writeFileSync(here('../data/last-run.json'), JSON.stringify({ date: report.date, counts: report.counts, errors: report.errors, added: report.added.length, changed: report.changed.length, ...(report.lhKinds && Object.keys(report.lhKinds).length ? { lhKinds: report.lhKinds } : {}) }, null, 1) + '\n');
 
 // 새 중기청 추천 공고는 GitHub 이슈로 올려 메일 알림을 받는다
 if (process.env.GITHUB_OUTPUT && sme.length) {
