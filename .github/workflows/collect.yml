@@ -18,6 +18,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
+      - name: 공고문 읽기 도구 설치
+        run: npm ci --omit=dev --no-audit --no-fund
       - name: 공고 수집
         id: collect
         run: node collect/ci.mjs

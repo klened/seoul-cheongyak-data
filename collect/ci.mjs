@@ -4,6 +4,7 @@ import { readFileSync, writeFileSync, mkdirSync, rmSync, appendFileSync } from '
 import { spawnSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { applyAutoDocs } from './auto-docs.mjs';
 
 const here = (p) => new URL(p, import.meta.url);
 const noticesFile = here('../data/notices.json');
@@ -48,8 +49,11 @@ for (const c of report.changed) {
   const old = byId.get(c.id);
   if (old) Object.assign(old, c.diff);
 }
-// 공고문을 읽어 확인한 값은 수집 결과보다 우선한다
+// 사람이 공고문을 읽어 확인한 값. 자동 읽기보다, 수집 결과보다 우선한다
 const facts = JSON.parse(readFileSync(here('./facts.json'), 'utf8'));
+// 접수 중·예정인 청년안심주택 공고문을 규칙으로 읽어 자격 기준을 넣는다. 표준과 다르면 넣지 않는다
+const todayKst = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+try { await applyAutoDocs(byId, facts, todayKst); } catch (e) { console.log('공고문 자동 읽기 건너뜀:', e.message); }
 for (const [id, f] of Object.entries(facts)) { const n = byId.get(id); if (n && id !== '_about') Object.assign(n, f); }
 const failedAll = Object.keys(report.errors).length >= Object.keys(report.counts).length;
 if (!failedAll) {
