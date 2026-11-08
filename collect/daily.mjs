@@ -245,6 +245,45 @@ await source('청년안심주택', async () => {
   }
 });
 
+// 5) LH 임대: 공공데이터포털 「한국토지주택공사 분양임대공고문 조회 서비스」(15058530). 키(LH_API_KEY)가 없으면 건너뛴다.
+//    행복주택·국민임대·매입임대·전세임대·든든전세 등 임대 공고 가운데 서울 지역만 넣는다. 키는 로그에 남기지 않는다.
+if (process.env.LH_API_KEY) await source('LH', async () => {
+  const raw = process.env.LH_API_KEY.trim();
+  const key = raw.includes('%') ? raw : encodeURIComponent(raw); // 인코딩 키·디코딩 키 모두 받는다
+  const dot = (t) => new Date(t).toISOString().slice(0, 10).replace(/-/g, '.');
+  const from = dot(Date.now() - 120 * 864e5), to = dot(Date.now() + 365 * 864e5);
+  // 응답 모양이 [{dsSch}, {resHeader, dsList}] 처럼 감싸여 있어 PAN_ID 가 든 배열을 찾아 쓴다
+  const findList = (v) => {
+    if (Array.isArray(v)) { if (v.some((x) => x && typeof x === 'object' && 'PAN_ID' in x)) return v; for (const x of v) { const f = findList(x); if (f) return f; } }
+    else if (v && typeof v === 'object') for (const x of Object.values(v)) { const f = findList(x); if (f) return f; }
+    return null;
+  };
+  const items = [];
+  for (let page = 1; page <= 5; page++) {
+    const text = await get(`https://apis.data.go.kr/B552555/lhLeaseNoticeInfo1/lhLeaseNoticeInfo1?serviceKey=${key}&PG_SZ=100&PAGE=${page}&CNP_CD=11&PAN_NT_ST_DT=${from}&CLSG_DT=${to}`);
+    let j;
+    try { j = JSON.parse(text); } catch { throw new Error('응답이 JSON 이 아님: ' + strip(text).slice(0, 120)); }
+    const list = findList(j) || [];
+    items.push(...list);
+    if (list.length < 100) break;
+    await wait(500);
+  }
+  const ymd = (v) => { const m = String(v || '').match(/(20\d\d)[.\-]?(\d\d)[.\-]?(\d\d)/); return m ? `${m[1]}-${m[2]}-${m[3]}` : ''; };
+  for (const x of items) {
+    const kind = `${x.UPP_AIS_TP_NM || ''} ${x.AIS_TP_CD_NM || ''}`;
+    if (!/임대|전세|주거복지/.test(kind) || (x.CNP_CD_NM && !/서울/.test(x.CNP_CD_NM)) || !x.PAN_ID) continue;
+    const name = dec(x.PAN_NM || '');
+    row({
+      id: 'lh-' + String(x.PAN_ID).trim(), src: 'LH', cat: 'LH 임대', name,
+      gu: (name.match(/([가-힣]+구)(?![가-힣])/) || [])[1] || '',
+      end: ymd(x.CLSG_DT), posted: ymd(x.PAN_NT_ST_DT),
+      who: x.AIS_TP_CD_NM || 'LH 임대', note: x.PAN_SS ? `LH 공고 상태: ${x.PAN_SS}` : '',
+      url: /^https:\/\/apply\.lh\.or\.kr\//.test(x.DTL_URL || '') ? x.DTL_URL : 'https://apply.lh.or.kr',
+    });
+  }
+});
+else console.log('LH: LH_API_KEY 가 없어 건너뜀');
+
 
 // 비교
 const added = []; const changed = [];

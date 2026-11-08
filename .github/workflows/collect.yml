@@ -23,6 +23,8 @@ jobs:
         run: npm ci --omit=dev --no-audit --no-fund
       - name: 공고 수집
         id: collect
+        env:
+          LH_API_KEY: ${{ secrets.LH_API_KEY }} # 없으면 LH 만 건너뛴다
         run: node collect/ci.mjs
       - name: 결과 저장
         if: always()
