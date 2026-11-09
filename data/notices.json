@@ -161,6 +161,33 @@
   "who": "무순위(사후)"
  },
  {
+  "sme": false,
+  "seen": "2026-11-09",
+  "id": "ahr-2026910290",
+  "src": "청약홈",
+  "cat": "무순위·임의공급",
+  "name": "청계 노르웨이숲(14차)",
+  "gu": "중구",
+  "start": "2026-11-16",
+  "end": "2026-11-17",
+  "ann": "2026-11-20",
+  "units": "6세대",
+  "who": "무순위(사후)",
+  "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910290&pblancNo=2026910290",
+  "moveIn": "2028년 7월",
+  "docUrl": "https://static.applyhome.co.kr/ai/aia/getAtchmnfl.do?houseManageNo=2026910290&pblancNo=2026910290&atchmnflSeqNo=2008590&atchmnflSn=2",
+  "el": [
+   {
+    "n": "무순위·임의공급",
+    "age": [
+     19,
+     200
+    ],
+    "v": 0
+   }
+  ]
+ },
+ {
   "id": "ahr-2026940227",
   "ann": "2026-10-30",
   "cat": "무순위·임의공급",
@@ -205,6 +232,33 @@
   "start": "2026-10-26",
   "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancListView.do",
   "who": "임의공급"
+ },
+ {
+  "sme": false,
+  "seen": "2026-11-09",
+  "id": "ahr-2026940252",
+  "src": "청약홈",
+  "cat": "무순위·임의공급",
+  "name": "신월동 한양립스(3차)",
+  "gu": "양천구",
+  "start": "2026-11-11",
+  "end": "2026-11-12",
+  "ann": "2026-11-17",
+  "units": "5세대",
+  "who": "임의공급",
+  "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940252&pblancNo=2026940252",
+  "moveIn": "2026년 12월",
+  "docUrl": "https://static.applyhome.co.kr/ai/aia/getAtchmnfl.do?houseManageNo=2026940252&pblancNo=2026940252&atchmnflSeqNo=2016036&atchmnflSn=3",
+  "el": [
+   {
+    "n": "무순위·임의공급",
+    "age": [
+     19,
+     200
+    ],
+    "v": 0
+   }
+  ]
  },
  {
   "id": "ahx-2026950088",
@@ -1231,7 +1285,7 @@
   "gu": "강서구",
   "name": "송정역 케이제이타워 최초모집공고",
   "posted": "2026-11-03",
-  "seen": "2026-11-08",
+  "seen": "2026-11-09",
   "sme": false,
   "src": "서울시 청년안심주택",
   "start": "2026-11-11",
@@ -1390,7 +1444,7 @@
   "gu": "광진구",
   "name": "건대입구역 더포디엄830 추가모집공고",
   "posted": "2026-11-05",
-  "seen": "2026-11-08",
+  "seen": "2026-11-09",
   "sme": false,
   "src": "서울시 청년안심주택",
   "start": "2026-11-09",
@@ -1479,7 +1533,7 @@
   "gu": "성북구",
   "name": "숭곡초교역(예정) 성북펠릭스 추가모집공고",
   "posted": "2026-11-05",
-  "seen": "2026-11-08",
+  "seen": "2026-11-09",
   "sme": false,
   "src": "서울시 청년안심주택",
   "start": "2026-11-09",
@@ -1538,7 +1592,7 @@
   "gu": "구로구",
   "name": "개봉역 세이지움 개봉 추가모집공고",
   "posted": "2026-11-05",
-  "seen": "2026-11-08",
+  "seen": "2026-11-09",
   "sme": false,
   "src": "서울시 청년안심주택",
   "start": "2026-11-09",
@@ -1625,7 +1679,7 @@
   "gu": "중랑구",
   "name": "화랑대역 에이트플레이스 추가모집공고",
   "posted": "2026-11-05",
-  "seen": "2026-11-08",
+  "seen": "2026-11-09",
   "sme": false,
   "src": "서울시 청년안심주택",
   "start": "2026-11-06",
