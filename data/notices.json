@@ -485,6 +485,33 @@
   ]
  },
  {
+  "sme": false,
+  "seen": "2026-11-19",
+  "id": "ahr-2026940257",
+  "src": "청약홈",
+  "cat": "무순위·임의공급",
+  "name": "강동한강 디에트르",
+  "gu": "강동구",
+  "start": "2026-11-24",
+  "end": "2026-11-25",
+  "ann": "2026-11-30",
+  "units": "13세대",
+  "who": "임의공급",
+  "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026940257&pblancNo=2026940257",
+  "moveIn": "2027년 4월",
+  "docUrl": "https://static.applyhome.co.kr/ai/aia/getAtchmnfl.do?houseManageNo=2026940257&pblancNo=2026940257&atchmnflSeqNo=2028027&atchmnflSn=6",
+  "el": [
+   {
+    "n": "무순위·임의공급",
+    "age": [
+     19,
+     200
+    ],
+    "v": 0
+   }
+  ]
+ },
+ {
   "id": "ahx-2026950088",
   "ann": "2026-11-02",
   "cat": "오피스텔·도시형",
@@ -663,6 +690,29 @@
    }
   ],
   "docUrl": "https://static.applyhome.co.kr/ai/aia/getAtchmnfl.do?houseManageNo=2026950095&pblancNo=2026950095&atchmnflSeqNo=2008322&atchmnflSn=5"
+ },
+ {
+  "sme": false,
+  "seen": "2026-11-19",
+  "id": "lh-2015122300021109",
+  "src": "LH",
+  "cat": "LH 임대",
+  "name": "2026년 서울특별시 영구임대주택 예비입주자 모집",
+  "end": "2026-12-04",
+  "posted": "2026-11-19",
+  "who": "영구임대",
+  "note": "LH 공고 상태: 공고중",
+  "url": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300021109&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=09&mi=1026",
+  "el": [
+   {
+    "n": "LH 임대",
+    "age": [
+     19,
+     200
+    ],
+    "v": 0
+   }
+  ]
  },
  {
   "id": "mss-1071044",
@@ -941,6 +991,30 @@
   "units": "3개소 총 7세대",
   "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313268",
   "posted": "2026-11-16",
+  "el": [
+   {
+    "n": "SH 임대",
+    "age": [
+     19,
+     200
+    ],
+    "v": 0
+   }
+  ]
+ },
+ {
+  "sme": false,
+  "seen": "2026-11-19",
+  "id": "sh-313424",
+  "src": "SH",
+  "cat": "SH 임대",
+  "name": "2026년 마포구 신혼부부,청년(수요자맞춤형)주택 잔여세대 입주자 모집 공고",
+  "gu": "마포구",
+  "start": "2026-11-25",
+  "end": "2026-12-04",
+  "units": "8세대",
+  "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313424",
+  "posted": "2026-11-18",
   "el": [
    {
     "n": "SH 임대",
@@ -2229,7 +2303,7 @@
  },
  {
   "sme": false,
-  "seen": "2026-11-18",
+  "seen": "2026-11-19",
   "id": "soco-6727",
   "src": "서울시 청년안심주택",
   "cat": "청년안심주택",
