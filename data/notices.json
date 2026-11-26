@@ -693,6 +693,64 @@
  },
  {
   "sme": false,
+  "seen": "2026-11-26",
+  "id": "ahx-2026950099",
+  "src": "청약홈",
+  "cat": "오피스텔·도시형",
+  "name": "더샵 퍼스트월드",
+  "gu": "중랑구",
+  "start": "2026-12-01",
+  "end": "2026-12-01",
+  "ann": "2026-12-04",
+  "units": "308세대",
+  "who": "오피스텔",
+  "url": "https://www.applyhome.co.kr/ai/aia/selectPRMOLttotPblancDetailView.do?houseManageNo=2026950099&pblancNo=2026950099&houseSecd=02",
+  "types": [
+   {
+    "t": "84OA",
+    "area": 84.9758,
+    "n": 44,
+    "amt": 98040
+   },
+   {
+    "t": "84OC",
+    "area": 84.993,
+    "n": 88,
+    "amt": 111130
+   },
+   {
+    "t": "84OD",
+    "area": 84.994,
+    "n": 44,
+    "amt": 107430
+   },
+   {
+    "t": "84OB",
+    "area": 84.9657,
+    "n": 88,
+    "amt": 105650
+   },
+   {
+    "t": "84OE",
+    "area": 84.9937,
+    "n": 44,
+    "amt": 104210
+   }
+  ],
+  "docUrl": "https://static.applyhome.co.kr/ai/aia/getAtchmnfl.do?houseManageNo=2026950099&pblancNo=2026950099&atchmnflSeqNo=2038048&atchmnflSn=4",
+  "el": [
+   {
+    "n": "오피스텔·도시형",
+    "age": [
+     19,
+     200
+    ],
+    "v": 0
+   }
+  ]
+ },
+ {
+  "sme": false,
   "seen": "2026-11-20",
   "id": "lh-2015122300021098",
   "src": "LH",
@@ -929,6 +987,30 @@
   "who": "중소기업 5년 이상(동일 기업 3년 이상) 재직, 무주택 세대구성원"
  },
  {
+  "sme": true,
+  "seen": "2026-11-26",
+  "id": "mss-1072772",
+  "src": "서울중기청",
+  "cat": "중기청 추천",
+  "name": "서대문 포레스트 힐 중앙하이츠",
+  "gu": "서대문구",
+  "start": "2026-11-26",
+  "end": "2026-11-30",
+  "ann": "2026-12-30",
+  "units": "1세대(예비 1)",
+  "who": "중소기업 5년 이상(동일 기업 3년 이상) 재직, 무주택 세대구성원",
+  "url": "https://www.mss.go.kr/site/seoul/ex/bbs/View.do?cbIdx=359&bcIdx=1072772&parentSeq=1072772",
+  "note": "입주자모집공고 12월 24일 예정, 취하 12월 28일까지",
+  "el": [
+   {
+    "n": "중소기업 재직자 추천",
+    "sme": true,
+    "house": "all",
+    "bank": true
+   }
+  ]
+ },
+ {
   "id": "sh-311908",
   "cat": "SH 임대",
   "el": [
@@ -1130,6 +1212,27 @@
   "name": "2026년 영구임대주택 예비입주자모집 공고",
   "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313610",
   "posted": "2026-11-19",
+  "el": [
+   {
+    "n": "SH 임대",
+    "age": [
+     19,
+     200
+    ],
+    "v": 0
+   }
+  ]
+ },
+ {
+  "sme": false,
+  "seen": "2026-11-26",
+  "id": "sh-313843",
+  "src": "SH",
+  "cat": "SH 임대",
+  "name": "2026년 제2차 보증금지원형 장기안심주택 입주자 모집공고",
+  "units": "7,000 호",
+  "url": "https://www.i-sh.co.kr/main/lay2/program/S1T294C295/www/brd/m_241/view.do?seq=313843",
+  "posted": "2026-11-25",
   "el": [
    {
     "n": "SH 임대",
