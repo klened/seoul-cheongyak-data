@@ -358,6 +358,42 @@
   ]
  },
  {
+  "sme": false,
+  "seen": "2026-11-27",
+  "id": "ahr-2026930047",
+  "src": "청약홈",
+  "cat": "무순위·임의공급",
+  "name": "청량리 롯데캐슬 하이루체",
+  "gu": "동대문구",
+  "start": "2026-12-02",
+  "end": "2026-12-02",
+  "ann": "2026-12-07",
+  "units": "1세대",
+  "who": "불법행위 재공급",
+  "url": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026930047&pblancNo=2026930047",
+  "types": [
+   {
+    "t": "059.9314B",
+    "area": 59.9314,
+    "gen": 1,
+    "spec": 0,
+    "n": 1,
+    "amt": 82383
+   }
+  ],
+  "docUrl": "https://static.applyhome.co.kr/ai/aia/getAtchmnfl.do?houseManageNo=2026930047&pblancNo=2026930047&atchmnflSeqNo=2027014&atchmnflSn=3",
+  "el": [
+   {
+    "n": "무순위·임의공급",
+    "age": [
+     19,
+     200
+    ],
+    "v": 0
+   }
+  ]
+ },
+ {
   "id": "ahr-2026940227",
   "ann": "2026-10-30",
   "cat": "무순위·임의공급",
@@ -5287,6 +5323,1280 @@
       39
      ],
      "basis": "2026-11-24",
+     "car": 4542,
+     "v": 1
+    }
+   ]
+  },
+  "planScope": "auto",
+  "who": "이번 모집: 청년·신혼부부 특별공급·일반공급"
+ },
+ {
+  "sme": false,
+  "seen": "2026-11-27",
+  "id": "soco-6881",
+  "src": "서울시 청년안심주택",
+  "cat": "청년안심주택",
+  "name": "신대방삼거리역 골드타워 추가모집공고",
+  "gu": "동작구",
+  "start": "2026-11-30",
+  "end": "2026-11-30",
+  "units": "2세대",
+  "posted": "2026-11-26",
+  "url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6881&menuNo=400008",
+  "docUrl": "https://soco.seoul.go.kr/coHouse/cmmn/file/fileDown.do?atchFileId=6430c6bef243400bbe6c1f1b2d985be2&fileSn=1",
+  "plans": [
+   {
+    "g": "일반공급",
+    "room": "원룸",
+    "who": "청년",
+    "n": 110,
+    "dep": 78000000,
+    "rent": 270000,
+    "fee": 78760
+   },
+   {
+    "g": "일반공급",
+    "room": "1.5룸",
+    "who": "청년",
+    "n": 6,
+    "dep": 70000000,
+    "rent": 530000,
+    "fee": 107020
+   },
+   {
+    "g": "일반공급",
+    "room": "2룸",
+    "who": "청년, 신혼부부",
+    "n": 7,
+    "dep": 141000000,
+    "rent": 470000,
+    "fee": 133800
+   },
+   {
+    "g": "일반공급",
+    "room": "2룸",
+    "who": "청년, 신혼부부",
+    "n": 8,
+    "dep": 141000000,
+    "rent": 470000,
+    "fee": 133800
+   },
+   {
+    "g": "일반공급",
+    "room": "셰어형",
+    "who": "청년",
+    "n": 1,
+    "dep": 78500000,
+    "rent": 255000,
+    "fee": 76420
+   }
+  ],
+  "el": [
+   {
+    "n": "청년 일반공급",
+    "g": "일반공급",
+    "who": "청년",
+    "m": [
+     "single"
+    ],
+    "docM": [
+     "parent"
+    ],
+    "house": "me",
+    "age": [
+     19,
+     39
+    ],
+    "basis": "2026-11-26",
+    "car": 4542,
+    "v": 1
+   }
+  ],
+  "auto": {
+   "doc": "https://soco.seoul.go.kr/coHouse/cmmn/file/fileDown.do?atchFileId=6430c6bef243400bbe6c1f1b2d985be2&fileSn=1",
+   "at": "2026-11-27",
+   "ok": true,
+   "std": 2026,
+   "groups": [
+    "일반공급"
+   ],
+   "who": [
+    "청년"
+   ],
+   "el": [
+    {
+     "n": "청년 일반공급",
+     "g": "일반공급",
+     "who": "청년",
+     "m": [
+      "single"
+     ],
+     "docM": [
+      "parent"
+     ],
+     "house": "me",
+     "age": [
+      19,
+      39
+     ],
+     "basis": "2026-11-26",
+     "car": 4542,
+     "v": 1
+    }
+   ]
+  },
+  "planScope": "auto",
+  "who": "이번 모집: 청년 일반공급"
+ },
+ {
+  "sme": false,
+  "seen": "2026-11-27",
+  "id": "soco-6882",
+  "src": "서울시 청년안심주택",
+  "cat": "청년안심주택",
+  "name": "연신내역 더스튜디오163 추가모집공고",
+  "gu": "은평구",
+  "start": "2026-11-30",
+  "end": "2026-11-30",
+  "units": "4세대",
+  "posted": "2026-11-26",
+  "url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6882&menuNo=400008",
+  "docUrl": "https://soco.seoul.go.kr/coHouse/cmmn/file/fileDown.do?atchFileId=46653443822847f7b82081b30d4fb0c3&fileSn=1",
+  "el": [
+   {
+    "n": "청년 특별공급",
+    "g": "특별공급",
+    "who": "청년",
+    "m": [
+     "single"
+    ],
+    "docM": [
+     "parent"
+    ],
+    "house": "me",
+    "age": [
+     19,
+     39
+    ],
+    "basis": "2026-11-26",
+    "car": 4542,
+    "v": 1,
+    "inc": [
+     null,
+     4576036,
+     7039524,
+     9802115,
+     10562642,
+     11192382
+    ],
+    "asset": 25100
+   },
+   {
+    "n": "청년 일반공급",
+    "g": "일반공급",
+    "who": "청년",
+    "m": [
+     "single"
+    ],
+    "docM": [
+     "parent"
+    ],
+    "house": "me",
+    "age": [
+     19,
+     39
+    ],
+    "basis": "2026-11-26",
+    "car": 4542,
+    "v": 1
+   }
+  ],
+  "auto": {
+   "doc": "https://soco.seoul.go.kr/coHouse/cmmn/file/fileDown.do?atchFileId=46653443822847f7b82081b30d4fb0c3&fileSn=1",
+   "at": "2026-11-27",
+   "ok": true,
+   "std": 2026,
+   "groups": [
+    "특별공급",
+    "일반공급"
+   ],
+   "who": [
+    "청년"
+   ],
+   "el": [
+    {
+     "n": "청년 특별공급",
+     "g": "특별공급",
+     "who": "청년",
+     "m": [
+      "single"
+     ],
+     "docM": [
+      "parent"
+     ],
+     "house": "me",
+     "age": [
+      19,
+      39
+     ],
+     "basis": "2026-11-26",
+     "car": 4542,
+     "v": 1,
+     "inc": [
+      null,
+      4576036,
+      7039524,
+      9802115,
+      10562642,
+      11192382
+     ],
+     "asset": 25100
+    },
+    {
+     "n": "청년 일반공급",
+     "g": "일반공급",
+     "who": "청년",
+     "m": [
+      "single"
+     ],
+     "docM": [
+      "parent"
+     ],
+     "house": "me",
+     "age": [
+      19,
+      39
+     ],
+     "basis": "2026-11-26",
+     "car": 4542,
+     "v": 1
+    }
+   ]
+  },
+  "planScope": "auto",
+  "who": "이번 모집: 청년 특별공급·일반공급"
+ },
+ {
+  "sme": false,
+  "seen": "2026-11-27",
+  "id": "soco-6883",
+  "src": "서울시 청년안심주택",
+  "cat": "청년안심주택",
+  "name": "왕십리역 라봄성동 추가모집공고",
+  "gu": "성동구",
+  "start": "2026-11-27",
+  "end": "2026-11-30",
+  "units": "예비자 모집",
+  "posted": "2026-11-26",
+  "url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6883&menuNo=400008",
+  "docUrl": "https://soco.seoul.go.kr/coHouse/cmmn/file/fileDown.do?atchFileId=1566b38f07de473697f4a25f45874d40&fileSn=1",
+  "plans": [
+   {
+    "g": "일반공급",
+    "room": "원룸",
+    "who": "청년",
+    "n": 17,
+    "dep": 114000000,
+    "rent": 490000,
+    "fee": 130000
+   },
+   {
+    "g": "일반공급",
+    "room": "원룸",
+    "who": "청년",
+    "n": 9,
+    "dep": 114000000,
+    "rent": 490000,
+    "fee": 140000
+   },
+   {
+    "g": "일반공급",
+    "room": "원룸",
+    "who": "청년",
+    "n": 62,
+    "dep": 119000000,
+    "rent": 510000,
+    "fee": 150000
+   },
+   {
+    "g": "일반공급",
+    "room": "원룸",
+    "who": "청년",
+    "n": 8,
+    "dep": 143000000,
+    "rent": 490000,
+    "fee": 160000
+   },
+   {
+    "g": "일반공급",
+    "room": "원룸",
+    "who": "청년",
+    "n": 7,
+    "dep": 142000000,
+    "rent": 500000,
+    "fee": 170000
+   },
+   {
+    "g": "일반공급",
+    "room": "1.5룸",
+    "who": "청년, 신혼부부",
+    "n": 39,
+    "dep": 190000000,
+    "rent": 630000,
+    "fee": 180000
+   },
+   {
+    "g": "일반공급",
+    "room": "1.5룸",
+    "who": "청년, 신혼부부",
+    "n": 2,
+    "dep": 190000000,
+    "rent": 630000,
+    "fee": 190000
+   }
+  ],
+  "el": [
+   {
+    "n": "청년 일반공급",
+    "g": "일반공급",
+    "who": "청년",
+    "m": [
+     "single"
+    ],
+    "docM": [
+     "parent"
+    ],
+    "house": "me",
+    "age": [
+     19,
+     39
+    ],
+    "basis": "2026-11-26",
+    "car": 4542,
+    "v": 1
+   }
+  ],
+  "auto": {
+   "doc": "https://soco.seoul.go.kr/coHouse/cmmn/file/fileDown.do?atchFileId=1566b38f07de473697f4a25f45874d40&fileSn=1",
+   "at": "2026-11-27",
+   "ok": true,
+   "std": 2026,
+   "groups": [
+    "일반공급"
+   ],
+   "who": [
+    "청년"
+   ],
+   "el": [
+    {
+     "n": "청년 일반공급",
+     "g": "일반공급",
+     "who": "청년",
+     "m": [
+      "single"
+     ],
+     "docM": [
+      "parent"
+     ],
+     "house": "me",
+     "age": [
+      19,
+      39
+     ],
+     "basis": "2026-11-26",
+     "car": 4542,
+     "v": 1
+    }
+   ]
+  },
+  "planScope": "auto",
+  "who": "이번 모집: 청년 일반공급"
+ },
+ {
+  "sme": false,
+  "seen": "2026-11-27",
+  "id": "soco-6884",
+  "src": "서울시 청년안심주택",
+  "cat": "청년안심주택",
+  "name": "연신내역 루미노816 추가모집공고",
+  "gu": "은평구",
+  "start": "2026-11-30",
+  "end": "2026-11-30",
+  "units": "1세대",
+  "posted": "2026-11-26",
+  "url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6884&menuNo=400008",
+  "docUrl": "https://soco.seoul.go.kr/coHouse/cmmn/file/fileDown.do?atchFileId=ee57a9fec02a4b898dc27bf336590f15&fileSn=1",
+  "plans": [
+   {
+    "g": "일반공급",
+    "room": "원룸",
+    "who": "청년",
+    "n": 36,
+    "dep": 57000000,
+    "rent": 390000,
+    "fee": 124000
+   },
+   {
+    "g": "일반공급",
+    "room": "원룸",
+    "who": "청년",
+    "n": 8,
+    "dep": 59000000,
+    "rent": 400000,
+    "fee": 134000
+   },
+   {
+    "g": "일반공급",
+    "room": "원룸",
+    "who": "청년",
+    "n": 43,
+    "dep": 59000000,
+    "rent": 400000,
+    "fee": 126000
+   },
+   {
+    "g": "일반공급",
+    "room": "1.5룸",
+    "who": "청년, 신혼부부",
+    "n": 18,
+    "dep": 92000000,
+    "rent": 560000,
+    "fee": 237000
+   },
+   {
+    "g": "일반공급",
+    "room": "1.5룸",
+    "who": "청년, 신혼부부",
+    "n": 35,
+    "dep": 93000000,
+    "rent": 570000,
+    "fee": 235000
+   },
+   {
+    "g": "일반공급",
+    "room": "1.5룸",
+    "who": "청년, 신혼부부",
+    "n": 2,
+    "dep": 94000000,
+    "rent": 570000,
+    "fee": 245000
+   },
+   {
+    "g": "일반공급",
+    "room": "1.5룸",
+    "who": "청년, 신혼부부",
+    "n": 2,
+    "dep": 98000000,
+    "rent": 590000,
+    "fee": 293000
+   }
+  ],
+  "el": [
+   {
+    "n": "청년 일반공급",
+    "g": "일반공급",
+    "who": "청년",
+    "m": [
+     "single"
+    ],
+    "docM": [
+     "parent"
+    ],
+    "house": "me",
+    "age": [
+     19,
+     39
+    ],
+    "basis": "2026-11-26",
+    "car": 4542,
+    "v": 1
+   },
+   {
+    "n": "신혼부부 일반공급",
+    "g": "일반공급",
+    "who": "신혼부부",
+    "m": [
+     "newly",
+     "engaged"
+    ],
+    "docM": [
+     "parent"
+    ],
+    "house": "all",
+    "age": [
+     19,
+     39
+    ],
+    "basis": "2026-11-26",
+    "car": 4542,
+    "v": 1
+   }
+  ],
+  "auto": {
+   "doc": "https://soco.seoul.go.kr/coHouse/cmmn/file/fileDown.do?atchFileId=ee57a9fec02a4b898dc27bf336590f15&fileSn=1",
+   "at": "2026-11-27",
+   "ok": true,
+   "std": 2026,
+   "groups": [
+    "일반공급"
+   ],
+   "who": [
+    "청년",
+    "신혼부부"
+   ],
+   "el": [
+    {
+     "n": "청년 일반공급",
+     "g": "일반공급",
+     "who": "청년",
+     "m": [
+      "single"
+     ],
+     "docM": [
+      "parent"
+     ],
+     "house": "me",
+     "age": [
+      19,
+      39
+     ],
+     "basis": "2026-11-26",
+     "car": 4542,
+     "v": 1
+    },
+    {
+     "n": "신혼부부 일반공급",
+     "g": "일반공급",
+     "who": "신혼부부",
+     "m": [
+      "newly",
+      "engaged"
+     ],
+     "docM": [
+      "parent"
+     ],
+     "house": "all",
+     "age": [
+      19,
+      39
+     ],
+     "basis": "2026-11-26",
+     "car": 4542,
+     "v": 1
+    }
+   ]
+  },
+  "planScope": "auto",
+  "who": "이번 모집: 청년·신혼부부 일반공급"
+ },
+ {
+  "sme": false,
+  "seen": "2026-11-27",
+  "id": "soco-6885",
+  "src": "서울시 청년안심주택",
+  "cat": "청년안심주택",
+  "name": "서울대벤처타운역 센터스퀘어 서울대점 추가모집공고",
+  "gu": "관악구",
+  "start": "2026-11-30",
+  "end": "2026-12-02",
+  "units": "예비자 모집",
+  "posted": "2026-11-26",
+  "url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6885&menuNo=400008",
+  "docUrl": "https://soco.seoul.go.kr/coHouse/cmmn/file/fileDown.do?atchFileId=2d8dfc93f5094344b9f871bf2fe41e18&fileSn=1",
+  "plans": [
+   {
+    "g": "일반공급",
+    "room": "원룸",
+    "who": "청년",
+    "n": 204,
+    "dep": 87000000,
+    "rent": 602000,
+    "fee": 88580
+   },
+   {
+    "g": "일반공급",
+    "room": "원룸",
+    "who": "청년",
+    "n": 31,
+    "dep": 93000000,
+    "rent": 645000,
+    "fee": 101970
+   },
+   {
+    "g": "일반공급",
+    "room": "1.5룸",
+    "who": "청년, 신혼부부",
+    "n": 24,
+    "dep": 138000000,
+    "rent": 786000,
+    "fee": 202600
+   }
+  ],
+  "el": [
+   {
+    "n": "청년 일반공급",
+    "g": "일반공급",
+    "who": "청년",
+    "m": [
+     "single"
+    ],
+    "docM": [
+     "parent"
+    ],
+    "house": "me",
+    "age": [
+     19,
+     39
+    ],
+    "basis": "2026-11-26",
+    "car": 4542,
+    "v": 1
+   }
+  ],
+  "auto": {
+   "doc": "https://soco.seoul.go.kr/coHouse/cmmn/file/fileDown.do?atchFileId=2d8dfc93f5094344b9f871bf2fe41e18&fileSn=1",
+   "at": "2026-11-27",
+   "ok": true,
+   "std": 2026,
+   "groups": [
+    "일반공급"
+   ],
+   "who": [
+    "청년"
+   ],
+   "el": [
+    {
+     "n": "청년 일반공급",
+     "g": "일반공급",
+     "who": "청년",
+     "m": [
+      "single"
+     ],
+     "docM": [
+      "parent"
+     ],
+     "house": "me",
+     "age": [
+      19,
+      39
+     ],
+     "basis": "2026-11-26",
+     "car": 4542,
+     "v": 1
+    }
+   ]
+  },
+  "planScope": "auto",
+  "who": "이번 모집: 청년 일반공급"
+ },
+ {
+  "sme": false,
+  "seen": "2026-11-27",
+  "id": "soco-6886",
+  "src": "서울시 청년안심주택",
+  "cat": "청년안심주택",
+  "name": "서울역 어반허브 서울스테이션 추가모집공고",
+  "gu": "용산구",
+  "start": "2026-12-08",
+  "end": "2026-12-10",
+  "units": "2세대",
+  "posted": "2026-11-26",
+  "url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6886&menuNo=400008",
+  "docUrl": "https://soco.seoul.go.kr/coHouse/cmmn/file/fileDown.do?atchFileId=8ee00c1d4e5d4640ae7af99888fec4b9&fileSn=1",
+  "plans": [
+   {
+    "g": "일반공급",
+    "room": "원룸",
+    "who": "청년",
+    "n": 5,
+    "dep": 100000000,
+    "rent": 430000,
+    "fee": 103337
+   },
+   {
+    "g": "일반공급",
+    "room": "원룸",
+    "who": "청년",
+    "n": 3,
+    "dep": 106000000,
+    "rent": 470000,
+    "fee": 96711
+   },
+   {
+    "g": "일반공급",
+    "room": "원룸",
+    "who": "청년",
+    "n": 5,
+    "dep": 106000000,
+    "rent": 470000,
+    "fee": 104420
+   },
+   {
+    "g": "일반공급",
+    "room": "원룸",
+    "who": "청년",
+    "n": 33,
+    "dep": 106000000,
+    "rent": 470000,
+    "fee": 100024
+   },
+   {
+    "g": "일반공급",
+    "room": "원룸",
+    "who": "청년",
+    "n": 8,
+    "dep": 108000000,
+    "rent": 490000,
+    "fee": 104948
+   },
+   {
+    "g": "일반공급",
+    "room": "원룸",
+    "who": "청년",
+    "n": 27,
+    "dep": 108000000,
+    "rent": 490000,
+    "fee": 106650
+   },
+   {
+    "g": "일반공급",
+    "room": "원룸",
+    "who": "청년",
+    "n": 36,
+    "dep": 108000000,
+    "rent": 490000,
+    "fee": 111784
+   },
+   {
+    "g": "일반공급",
+    "room": "1.5룸",
+    "who": "청년, 신혼부부",
+    "n": 4,
+    "dep": 128000000,
+    "rent": 520000,
+    "fee": 178216
+   }
+  ],
+  "el": [
+   {
+    "n": "청년 일반공급",
+    "g": "일반공급",
+    "who": "청년",
+    "m": [
+     "single"
+    ],
+    "docM": [
+     "parent"
+    ],
+    "house": "me",
+    "age": [
+     19,
+     39
+    ],
+    "basis": "2026-11-26",
+    "car": 4542,
+    "v": 1
+   }
+  ],
+  "auto": {
+   "doc": "https://soco.seoul.go.kr/coHouse/cmmn/file/fileDown.do?atchFileId=8ee00c1d4e5d4640ae7af99888fec4b9&fileSn=1",
+   "at": "2026-11-27",
+   "ok": true,
+   "std": 2026,
+   "groups": [
+    "일반공급"
+   ],
+   "who": [
+    "청년"
+   ],
+   "el": [
+    {
+     "n": "청년 일반공급",
+     "g": "일반공급",
+     "who": "청년",
+     "m": [
+      "single"
+     ],
+     "docM": [
+      "parent"
+     ],
+     "house": "me",
+     "age": [
+      19,
+      39
+     ],
+     "basis": "2026-11-26",
+     "car": 4542,
+     "v": 1
+    }
+   ]
+  },
+  "planScope": "auto",
+  "who": "이번 모집: 청년 일반공급"
+ },
+ {
+  "sme": false,
+  "seen": "2026-11-27",
+  "id": "soco-6887",
+  "src": "서울시 청년안심주택",
+  "cat": "청년안심주택",
+  "name": "청량리역 퀸즈W 청량리역 추가모집공고",
+  "gu": "동대문구",
+  "start": "2026-11-30",
+  "end": "2026-12-01",
+  "units": "예비자 모집",
+  "posted": "2026-11-26",
+  "url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6887&menuNo=400008",
+  "docUrl": "https://soco.seoul.go.kr/coHouse/cmmn/file/fileDown.do?atchFileId=c981971f5a9e4a75a674558cb8796349&fileSn=1",
+  "plans": [
+   {
+    "g": "특별공급",
+    "room": "원룸",
+    "who": "청년",
+    "n": 13,
+    "dep": 92000000,
+    "rent": 380000,
+    "fee": 117000
+   },
+   {
+    "g": "특별공급",
+    "room": "원룸",
+    "who": "청년",
+    "n": 2,
+    "dep": 92000000,
+    "rent": 380000,
+    "fee": 117000
+   },
+   {
+    "g": "특별공급",
+    "room": "원룸",
+    "who": "청년",
+    "n": 1,
+    "dep": 92000000,
+    "rent": 380000,
+    "fee": 117000
+   },
+   {
+    "g": "특별공급",
+    "room": "1.5룸",
+    "who": "신혼부부",
+    "n": 1,
+    "dep": 170000000,
+    "rent": 700000,
+    "fee": 237000
+   },
+   {
+    "g": "특별공급",
+    "room": "1.5룸",
+    "who": "신혼부부",
+    "n": 1,
+    "dep": 170000000,
+    "rent": 700000,
+    "fee": 234000
+   },
+   {
+    "g": "특별공급",
+    "room": "1.5룸",
+    "who": "신혼부부",
+    "n": 1,
+    "dep": 170000000,
+    "rent": 700000,
+    "fee": 234000
+   },
+   {
+    "g": "특별공급",
+    "room": "1.5룸",
+    "who": "신혼부부",
+    "n": 2,
+    "dep": 170000000,
+    "rent": 700000,
+    "fee": 237000
+   },
+   {
+    "g": "특별공급",
+    "room": "1.5룸",
+    "who": "신혼부부",
+    "n": 1,
+    "dep": 170000000,
+    "rent": 700000,
+    "fee": 237000
+   },
+   {
+    "g": "일반공급",
+    "room": "원룸",
+    "who": "청년",
+    "n": 42,
+    "dep": 110000000,
+    "rent": 450000,
+    "fee": 117000
+   },
+   {
+    "g": "일반공급",
+    "room": "원룸",
+    "who": "청년",
+    "n": 7,
+    "dep": 110000000,
+    "rent": 450000,
+    "fee": 117000
+   },
+   {
+    "g": "일반공급",
+    "room": "원룸",
+    "who": "청년",
+    "n": 4,
+    "dep": 110000000,
+    "rent": 450000,
+    "fee": 117000
+   },
+   {
+    "g": "일반공급",
+    "room": "1.5룸",
+    "who": "청년, 신혼부부",
+    "n": 2,
+    "dep": 202000000,
+    "rent": 840000,
+    "fee": 237000
+   },
+   {
+    "g": "일반공급",
+    "room": "1.5룸",
+    "who": "청년, 신혼부부",
+    "n": 4,
+    "dep": 202000000,
+    "rent": 840000,
+    "fee": 237000
+   },
+   {
+    "g": "일반공급",
+    "room": "1.5룸",
+    "who": "청년, 신혼부부",
+    "n": 6,
+    "dep": 202000000,
+    "rent": 840000,
+    "fee": 234000
+   },
+   {
+    "g": "일반공급",
+    "room": "1.5룸",
+    "who": "청년, 신혼부부",
+    "n": 6,
+    "dep": 202000000,
+    "rent": 840000,
+    "fee": 234000
+   },
+   {
+    "g": "일반공급",
+    "room": "1.5룸",
+    "who": "청년, 신혼부부",
+    "n": 8,
+    "dep": 202000000,
+    "rent": 840000,
+    "fee": 237000
+   },
+   {
+    "g": "일반공급",
+    "room": "1.5룸",
+    "who": "청년, 신혼부부",
+    "n": 5,
+    "dep": 202000000,
+    "rent": 840000,
+    "fee": 237000
+   }
+  ],
+  "el": [
+   {
+    "n": "청년안심주택",
+    "age": [
+     19,
+     39
+    ],
+    "house": "me",
+    "v": 0
+   }
+  ],
+  "auto": {
+   "doc": "https://soco.seoul.go.kr/coHouse/cmmn/file/fileDown.do?atchFileId=c981971f5a9e4a75a674558cb8796349&fileSn=1",
+   "at": "2026-11-27",
+   "ok": false,
+   "why": "공급 구분을 찾지 못함"
+  }
+ },
+ {
+  "sme": false,
+  "seen": "2026-11-27",
+  "id": "soco-6889",
+  "src": "서울시 청년안심주택",
+  "cat": "청년안심주택",
+  "name": "회기역 하트리움 추가모집공고",
+  "gu": "동대문구",
+  "start": "2026-11-30",
+  "end": "2026-11-30",
+  "units": "예비자 모집",
+  "posted": "2026-11-26",
+  "url": "https://soco.seoul.go.kr/youth/bbs/BMSR00015/view.do?boardId=6889&menuNo=400008",
+  "docUrl": "https://soco.seoul.go.kr/coHouse/cmmn/file/fileDown.do?atchFileId=bc4bd28b5422432ebed557718c6263ab&fileSn=1",
+  "plans": [
+   {
+    "g": "특별공급",
+    "room": "원룸",
+    "who": "청년",
+    "n": 110,
+    "dep": 95000000,
+    "rent": 200000,
+    "fee": 29730
+   },
+   {
+    "g": "일반공급",
+    "room": "원룸",
+    "who": "청년",
+    "n": 141,
+    "dep": 113000000,
+    "rent": 240000,
+    "fee": 29730
+   },
+   {
+    "g": "일반공급",
+    "room": "투룸",
+    "who": "신혼부부",
+    "n": 196,
+    "dep": 222000000,
+    "rent": 140000,
+    "fee": 61910
+   },
+   {
+    "g": "일반공급",
+    "room": "투룸",
+    "who": "신혼부부",
+    "n": 34,
+    "dep": 222000000,
+    "rent": 120000,
+    "fee": 61910
+   },
+   {
+    "g": "일반공급",
+    "room": "투룸",
+    "who": "신혼부부",
+    "n": 10,
+    "dep": 222000000,
+    "rent": 120000,
+    "fee": 61910
+   },
+   {
+    "g": "일반공급",
+    "room": "투룸",
+    "who": "신혼부부",
+    "n": 11,
+    "dep": 222000000,
+    "rent": 120000,
+    "fee": 61910
+   }
+  ],
+  "el": [
+   {
+    "n": "청년 특별공급",
+    "g": "특별공급",
+    "who": "청년",
+    "m": [
+     "single"
+    ],
+    "docM": [
+     "parent"
+    ],
+    "house": "me",
+    "age": [
+     19,
+     39
+    ],
+    "basis": "2026-11-26",
+    "car": 4542,
+    "v": 1,
+    "inc": [
+     null,
+     4576036,
+     7039524,
+     9802115,
+     10562642,
+     11192382
+    ],
+    "asset": 25100
+   },
+   {
+    "n": "신혼부부 특별공급",
+    "g": "특별공급",
+    "who": "신혼부부",
+    "m": [
+     "newly",
+     "engaged"
+    ],
+    "docM": [
+     "parent"
+    ],
+    "house": "all",
+    "age": [
+     19,
+     39
+    ],
+    "basis": "2026-11-26",
+    "car": 4542,
+    "v": 1,
+    "inc": [
+     null,
+     4576036,
+     7039524,
+     9802115,
+     10562642,
+     11192382
+    ],
+    "asset": 34500
+   },
+   {
+    "n": "청년 일반공급",
+    "g": "일반공급",
+    "who": "청년",
+    "m": [
+     "single"
+    ],
+    "docM": [
+     "parent"
+    ],
+    "house": "me",
+    "age": [
+     19,
+     39
+    ],
+    "basis": "2026-11-26",
+    "car": 4542,
+    "v": 1
+   },
+   {
+    "n": "신혼부부 일반공급",
+    "g": "일반공급",
+    "who": "신혼부부",
+    "m": [
+     "newly",
+     "engaged"
+    ],
+    "docM": [
+     "parent"
+    ],
+    "house": "all",
+    "age": [
+     19,
+     39
+    ],
+    "basis": "2026-11-26",
+    "car": 4542,
+    "v": 1
+   }
+  ],
+  "auto": {
+   "doc": "https://soco.seoul.go.kr/coHouse/cmmn/file/fileDown.do?atchFileId=bc4bd28b5422432ebed557718c6263ab&fileSn=1",
+   "at": "2026-11-27",
+   "ok": true,
+   "std": 2026,
+   "groups": [
+    "특별공급",
+    "일반공급"
+   ],
+   "who": [
+    "청년",
+    "신혼부부"
+   ],
+   "el": [
+    {
+     "n": "청년 특별공급",
+     "g": "특별공급",
+     "who": "청년",
+     "m": [
+      "single"
+     ],
+     "docM": [
+      "parent"
+     ],
+     "house": "me",
+     "age": [
+      19,
+      39
+     ],
+     "basis": "2026-11-26",
+     "car": 4542,
+     "v": 1,
+     "inc": [
+      null,
+      4576036,
+      7039524,
+      9802115,
+      10562642,
+      11192382
+     ],
+     "asset": 25100
+    },
+    {
+     "n": "신혼부부 특별공급",
+     "g": "특별공급",
+     "who": "신혼부부",
+     "m": [
+      "newly",
+      "engaged"
+     ],
+     "docM": [
+      "parent"
+     ],
+     "house": "all",
+     "age": [
+      19,
+      39
+     ],
+     "basis": "2026-11-26",
+     "car": 4542,
+     "v": 1,
+     "inc": [
+      null,
+      4576036,
+      7039524,
+      9802115,
+      10562642,
+      11192382
+     ],
+     "asset": 34500
+    },
+    {
+     "n": "청년 일반공급",
+     "g": "일반공급",
+     "who": "청년",
+     "m": [
+      "single"
+     ],
+     "docM": [
+      "parent"
+     ],
+     "house": "me",
+     "age": [
+      19,
+      39
+     ],
+     "basis": "2026-11-26",
+     "car": 4542,
+     "v": 1
+    },
+    {
+     "n": "신혼부부 일반공급",
+     "g": "일반공급",
+     "who": "신혼부부",
+     "m": [
+      "newly",
+      "engaged"
+     ],
+     "docM": [
+      "parent"
+     ],
+     "house": "all",
+     "age": [
+      19,
+      39
+     ],
+     "basis": "2026-11-26",
      "car": 4542,
      "v": 1
     }
